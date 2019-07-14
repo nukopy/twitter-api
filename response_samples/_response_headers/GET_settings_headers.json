@@ -1,0 +1,61 @@
+{
+    'cache-control': 'no-cache, no-store, must-
+    revalidate,
+    pre - check = 0,
+    post - check = 0 ', '
+    content - disp
+    osition ': '
+    attachment;filename = json.json ', '
+    content -
+    encoding ': '
+    gzip ', '
+    content - length ': '
+    401 ', '
+    content -
+    type ': '
+    application / json;charset = utf - 8 ', '
+    date ': '
+    Wed,
+    10 Jul 2019 16: 39: 59 GMT ', '
+    expires ': '
+    Tue,
+    31 Mar
+    1981 05: 00: 00 GMT ', '
+    last - modified ': '
+    Wed,
+    10 Jul 201
+    9 16: 39: 59 GMT ', '
+    pragma ': '
+    no - cache ', '
+    server ': '
+    tsa
+    _m ', '
+    status ': '
+    200 OK ', '
+    strict - transport - security ':
+    'max-age=631138519',
+    'x-access-level': 'read-write',
+    'x-connection-hash': '8c0882f3b18bb2cfeaa72bbc2e299f
+    c9 ', '
+    x - content - type - options ': '
+    nosniff ', '
+    x - frame - op
+    tions ': '
+    SAMEORIGIN ', '
+    x - rate - limit - limit ': '
+    15 ', '
+    x -
+    rate - limit - remaining ': '
+    12 ', '
+    x - rate - limit - reset ': '
+    1
+    562777675 ', '
+    x - response - time ': '
+    127 ', '
+    x - transaction ': '
+    0077 c6570077e6c6 ',
+    'x-twitter-response-tags': 'Bou
+    ncerCompliant ', '
+    x - xss - protection ': '
+    1;mode = block;r
+    eport = https: //twitter.com/i/xss_report'}

@@ -1,0 +1,36 @@
+{
+    "rate_limit_context": {
+        "access_token": "xxxxxxxxxx"
+    },
+    "resources": {
+        "application": {
+            "/application/rate_limit_status": {
+                "limit": 180,
+                "remaining": 177,
+                "reset": 1562824412
+            }
+        },
+        "account": {
+            "/account/login_verification_enrollment": {
+                "limit": 15,
+                "remaining": 15,
+                "reset": 1562824735
+            },
+            "/account/update_profile": {
+                "limit": 15,
+                "remaining": 15,
+                "reset": 1562824735
+            },
+            "/account/verify_credentials": {
+                "limit": 75,
+                "remaining": 75,
+                "reset": 1562824735
+            },
+            "/account/settings": {
+                "limit": 15,
+                "remaining": 15,
+                "reset": 1562824735
+            }
+        }
+    }
+}
