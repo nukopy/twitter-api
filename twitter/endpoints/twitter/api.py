@@ -6,6 +6,8 @@ import tweepy
 
 from .utils import Utils
 # import sys;sys.path.append('/Users/okuwaki/Projects/AtCoderStream/AtCoderStream/lib/twitter_api')
+API_VERSION = '1.1'
+BASE_URL = f'https://api.twitter.com/{API_VERSION}/'
 
 
 class TwitterAPI:

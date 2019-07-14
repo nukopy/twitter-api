@@ -1,18 +1,19 @@
+import json
+
 """
 * HTTP レスポンスヘッダを出力するようなデコレータ？
 """
 
-API_VERSION = '1.1'
-BASE_URL = f'https://api.twitter.com/{API_VERSION}/'
 
 
 class Utils:
+
     @staticmethod
-    def create_endpoint(segment: str) -> str:
-        """
-        ex)
-        endpoint: 'lists/members'
-            * category: lists
-            * name: members
-        """
-        return BASE_URL + segment + '.json'
+    def dump2json(segment: str, filename: str, response_json: dict) -> None:
+        path = '../../response_samples/{}/{}.json'.format(segment, filename)
+        with open(path, mode='w', encoding='utf-8') as f:
+            json.dump(response_json, f,
+                      ensure_ascii=False,
+                      indent=4,
+                      separators=(',', ':')
+                      )
