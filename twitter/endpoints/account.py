@@ -89,6 +89,8 @@ class Account(TwitterAPI):
             """
             path = 'account/settings'
             endpoint = Utils.create_endpoint(path)
+            response = self.api.post(url=endpoint)
+            return response
 
         def update_profile(self):
             """
@@ -109,6 +111,8 @@ class Account(TwitterAPI):
             """
             path = 'account/update_profile'
             endpoint = Utils.create_endpoint(path)
+            response = self.api.post(url=endpoint)
+            return response
 
         def update_profile_background_image(self):
             """ update_profile_background_image
@@ -132,6 +136,8 @@ class Account(TwitterAPI):
             """
             path = 'account/update_profile_background_image'
             endpoint = Utils.create_endpoint(path)
+            response = self.api.post(url=endpoint)
+            return response
 
         def update_profile_banner(self):
             """ update_profile_banner
@@ -158,6 +164,8 @@ class Account(TwitterAPI):
             """
             path = 'account/update_profile_banner'
             endpoint = Utils.create_endpoint(path)
+            response = self.api.post(url=endpoint)
+            return response
 
         def update_profile_image(self):
             """
@@ -178,6 +186,8 @@ class Account(TwitterAPI):
             """
             path = 'account/update_profile'
             endpoint = Utils.create_endpoint('account/update_profile_image')
+            response = self.api.post(url=endpoint)
+            return response
 
 
 if __name__ == "__main__":
@@ -187,3 +197,4 @@ if __name__ == "__main__":
         access_token=os.environ['TW_ACCESS_TOKEN'],
         access_secret=os.environ['TW_ACCESS_SECRET'],
     )
+    response = api.POST.update_profile()
