@@ -11,41 +11,48 @@ BASE_URL = f'https://api.twitter.com/{API_VERSION}/'
 
 
 class TwitterAPI:
-    def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
-        print('TwitterAPI instance initialized.\n')
-        self.api = OAuth1Session(
-            client_key=consumer_key,
-            client_secret=consumer_secret,
-            resource_owner_key=access_token,
-            resource_owner_secret=access_secret
-        )
+    def __init__(self,
+                 consumer_key: str = None,
+                 consumer_secret: str = None,
+                 access_token: str = None,
+                 access_secret: str = None,
+                 application_only_auth: bool = False,
+                 api_host: str = 'https://api.twitter.com/',
+                 api_version: str = '1.1',
+                 cache: str = None,
+                 ):
+        """[summary]
+
+        Keyword Arguments:
+            consumer_key {str} -- [description] (default: {None})
+            consumer_secret {str} -- [description] (default: {None})
+            access_token {str} -- [description] (default: {None})
+            access_secret {str} -- [description] (default: {None})
+            application_only_auth {bool} -- [In general, endpoints related to specific user information will require OAuth (Application-user) authentication, and endpoints related to retrieving **publicly available** information will require OAuth2 (bearer token) or Basic Auth (for Enterprise data APIs).] (default: {False})
+                * specific user information: OAuth1 (Application-user) authentication
+                * publicly available: OAuth 2(bearer token) or Basic authentication
+            api_host {str} -- [description] (default: {'https://api.twitter.com/'})
+            api_version {str} -- [description] (default: {'1.1'})
+            cache {str} -- [description] (default: {None})
+        """
+        self.consumer_key = consumer_key
+        self.consumer_secret = consumer_secret
+        self.access_token = access_token
+        self.access_secret = access_secret
+        self.application_only_auth = application_only_auth
+        self.api_host = api_host
+        self.api_version = api_version
+        self.cache = cache
+
+        # API authentication & authorization
+        self.api = None
 
 
-class Account(TwitterAPI):  # account.py
-    pass
-
-
-class Application(TwitterAPI):  # application.py
-    """API 'application/'
-    レートリミットの情報を取り扱うエンドポイント．
-    * GET application/rate_limit_status レートリミット設定と使用状況を取得する。
-    """
-    pass
-
-
-class Blocks(TwitterAPI):
-    """API 'blocks/'
-    ブロック関係のデータを取り扱うエンドポイント
-    * GET blocks/ids ブロックしているユーザーを、ユーザーIDで取得する。
-    * GET blocks/list ブロックしているユーザーを、ユーザーオブジェクトで取得する。
-    * POST blocks/create ブロックを実行する。
-    * POST blocks/destroy ブロックを解除する。
-    """
-    pass
-
-
-class Collections(TwitterAPI):
-    pass
+# DONE list
+# * Account(TwitterAPI): account.py
+# * Application(TwitterAPI): application.py
+# * Blocks(TwitterAPI): blocks.py
+# * Collections: NOT implemented
 
 
 class DirectMessages(TwitterAPI):
@@ -149,23 +156,23 @@ class Lists(TwitterAPI):
 
 
 class Media(TwitterAPI):
-    """API 'mutes/'
-    ミュート関係のデータを取り扱うエンドポイント．
-    * GET mutes/users/ids 自分がミュートしているユーザーを、ユーザーIDの一覧で取得する。
-    * GET mutes/users/list 自分がミュートしているユーザーを、オブジェクトの一覧で取得する。
-    * POST mutes/users/create ミュートを実行する。
-    * POST mutes/users/destroy ミュートを解除する
-    """
-    pass
-
-
-class Mutes(TwitterAPI):
     """API 'media/'
     メディアアップロードをするエンドポイント．
     * POST media/upload 画像をアップロードする。
     * POST media/upload (APPEND) 動画のアップロードを実行する。
     * POST media/upload (FINALIZE) 動画のアップロードを完了する。
     * POST media/upload (INIT) 動画のアップロードを準備する。
+    """
+    pass
+
+
+class Mutes(TwitterAPI):
+    """API 'mutes/'
+    ミュート関係のデータを取り扱うエンドポイント．
+    * GET mutes/users/ids 自分がミュートしているユーザーを、ユーザーIDの一覧で取得する。
+    * GET mutes/users/list 自分がミュートしているユーザーを、オブジェクトの一覧で取得する。
+    * POST mutes/users/create ミュートを実行する。
+    * POST mutes/users/destroy ミュートを解除する
     """
     pass
 
