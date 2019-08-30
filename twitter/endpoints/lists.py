@@ -29,67 +29,81 @@ class Lists(TwitterAPI):
 
     def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
         super().__init__(consumer_key, consumer_secret, access_token, access_secret)
+        self.GET = self._GET(self.api)
+        self.POST = self._POST(self.api)
 
-    # GET method
-    def list(self, params={
-        'user_id': '',
-        'screen_name': 'mathnuko',
-        'reverse': False,
-    }):
-        endpoint = Utils.create_endpoint('lists/list')
-        return self.api.get(endpoint, params=params)
+    # inner class for GET methods
 
-    def members(self):
-        endpoint = Utils.create_endpoint('lists/members')
+    class _GET:
+        def __init__(self, api):
+            self.method = 'GET'
+            self.api = api
 
-    def members_show(self):
-        endpoint = Utils.create_endpoint('lists/members/show')
+        def list(self, params={
+            'user_id': '',
+            'screen_name': 'mathnuko',
+            'reverse': False,
+        }):
+            endpoint = Utils.create_endpoint('lists/list')
+            return self.api.get(endpoint, params=params)
 
-    def memberships(self):
-        endpoint = Utils.create_endpoint('lists/memberships')
+        def members(self):
+            endpoint = Utils.create_endpoint('lists/members')
 
-    def ownerships(self):
-        endpoint = Utils.create_endpoint('lists/ownerships')
+        def members_show(self):
+            endpoint = Utils.create_endpoint('lists/members/show')
 
-    def show(self):
-        endpoint = Utils.create_endpoint('lists/show')
+        def memberships(self):
+            endpoint = Utils.create_endpoint('lists/memberships')
 
-    def statuses(self):
-        endpoint = Utils.create_endpoint('lists/statuses')
+        def ownerships(self):
+            endpoint = Utils.create_endpoint('lists/ownerships')
 
-    def subscribers(self):
-        endpoint = Utils.create_endpoint('lists/subscribers')
+        def show(self):
+            endpoint = Utils.create_endpoint('lists/show')
 
-    def subscriptions(self):
-        endpoint = Utils.create_endpoint('lists/subscriptions')
+        def statuses(self):
+            endpoint = Utils.create_endpoint('lists/statuses')
 
-    # POST method
-    def create(self):
-        endpoint = Utils.create_endpoint('lists/create')
+        def subscribers(self):
+            endpoint = Utils.create_endpoint('lists/subscribers')
 
-    def destroy(self):
-        endpoint = Utils.create_endpoint('lists/destroy')
+        def subscriptions(self):
+            endpoint = Utils.create_endpoint('lists/subscriptions')
 
-    def members_create(self):
-        endpoint = Utils.create_endpoint('lists/members/create')
+    # inner class for POST methods
 
-    def members_create_all(self):
-        endpoint = Utils.create_endpoint('lists/members/create_all')
+    class _POST:
+        def __init__(self, api):
+            self.method = 'POST'
+            self.api = api
 
-    def members_destroy(self):
-        endpoint = Utils.create_endpoint('lists/members/destroy')
+        def create(self):
+            endpoint = Utils.create_endpoint('lists/create')
 
-    def members_destroy_all(self):
-        endpoint = Utils.create_endpoint('lists/members/destroy_all')
+        def destroy(self):
+            endpoint = Utils.create_endpoint('lists/destroy')
 
-    def subscribers_create(self):
-        endpoint = Utils.create_endpoint('lists/subscribers/create')
+        def members_create(self):
+            endpoint = Utils.create_endpoint('lists/members/create')
 
-    def subscribers_destroy(self):
-        endpoint = Utils.create_endpoint('lists/subscribers/destroy')
+        def members_create_all(self):
+            endpoint = Utils.create_endpoint('lists/members/create_all')
 
-    def update(self):
-        endpoint = Utils.create_endpoint('lists/update')
+        def members_destroy(self):
+            endpoint = Utils.create_endpoint('lists/members/destroy')
+
+        def members_destroy_all(self):
+            endpoint = Utils.create_endpoint('lists/members/destroy_all')
+
+        def subscribers_create(self):
+            endpoint = Utils.create_endpoint('lists/subscribers/create')
+
+        def subscribers_destroy(self):
+            endpoint = Utils.create_endpoint('lists/subscribers/destroy')
+
+        def update(self):
+            endpoint = Utils.create_endpoint('lists/update')
 
 
 if __name__ == "__main__":

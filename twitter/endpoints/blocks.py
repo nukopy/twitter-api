@@ -1,4 +1,4 @@
-import os
+/import os
 
 from twitter.api import TwitterAPI
 from twitter.utils import Utils
@@ -15,8 +15,8 @@ class Blocks(TwitterAPI):
 
     def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
         super().__init__(consumer_key, consumer_secret, access_token, access_secret)
-        self.GET = Blocks._GET(self.api)
-        self.POST = Blocks._POST(self.api)
+        self.GET = self._GET(self.api)
+        self.POST = self._POST(self.api)
 
     class _GET:
         def __init__(self, api):
@@ -46,7 +46,7 @@ class Blocks(TwitterAPI):
                                         これを使って前後のページを操作できます。詳細情報についてはUsing cursors to navigate collectionsを参照してください。
                                         サンプル値: 12893764510938
             """
-            path = 'blocks/ids'
+            path = 'blocks/ids/'
             endpoint = Utils.create_endpoint(path)
             params = {
                 'stringify': stringify,
@@ -77,7 +77,7 @@ class Blocks(TwitterAPI):
                                         API からの応答には previous_cursorパラメータと next_cursorパラメータが含まれており、これを使って前後のページを操作できます。詳細情報についてはUsing cursors to navigate collectionsを参照してください。
                                         サンプル値: 12893764510938
             """
-            path = 'blocks/list'
+            path = 'blocks/list/'
             endpoint = Utils.create_endpoint(path)
             params = {
                 'include_entities': include_entities,
@@ -118,7 +118,7 @@ class Blocks(TwitterAPI):
                 * include_entities(optional): falseを設定すると、entitiesノードは含まれません。
                 * skip_status(optional): trueかtか1を設定した場合、取得したユーザーオブジェクトにステータス情報は含まれません。
             """
-            path = 'blocks/create'
+            path = 'blocks/create/'
             endpoint = Utils.create_endpoint(path)
             params = {
                 'screen_name': screen_name,
@@ -153,7 +153,7 @@ class Blocks(TwitterAPI):
                 * skip_status(optional): trueかtか1を設定した場合、取得したユーザーオブジェクトにステータス情報は含まれません。
 
             """
-            path = 'blocks/destroy'
+            path = 'blocks/destroy/'
             endpoint = Utils.create_endpoint(path)
             params = params = {
                 'screen_name': screen_name,

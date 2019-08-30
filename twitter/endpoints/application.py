@@ -12,8 +12,8 @@ class Application(TwitterAPI):  # application.py
 
     def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
         super().__init__(consumer_key, consumer_secret, access_token, access_secret)
-        self.GET = Application._GET(self.api)
-        self.POST = Application._POST(self.api)
+        self.GET = self._GET(self.api)
+        self.POST = self._POST(self.api)
 
     class _GET:
         def __init__(self, api):
@@ -40,7 +40,7 @@ class Application(TwitterAPI):  # application.py
                 * resources(optional): A comma-separated list of resource families you want to know the current rate limit disposition for. For best performance, only specify the resource families pertinent to your application. See API Rate Limiting for more information.
                 ex) {'resouces': 'account,statuses,friends,help'}
             """
-            path = 'application/rate_limit_status'
+            path = 'application/rate_limit_status/'
             endpoint = Utils.create_endpoint(path)
             params = {'resources': 'account,application'}
             response = self.api.get(url=endpoint, params=params)

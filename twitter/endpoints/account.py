@@ -20,8 +20,8 @@ class Account(TwitterAPI):
 
     def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
         super().__init__(consumer_key, consumer_secret, access_token, access_secret)
-        self.GET = Account._GET(self.api)
-        self.POST = Account._POST(self.api)
+        self.GET = self._GET(self.api)
+        self.POST = self._POST(self.api)
 
     # inner class for GET methods
     class _GET:
@@ -37,7 +37,7 @@ class Account(TwitterAPI):
             * rate-limit: 15 times / 15 min
             * allowed parameter: None
             """
-            path = 'account/settings'
+            path = 'account/settings/'
             endpoint = Utils.create_endpoint(path)
             response = self.api.get(url=endpoint)
             return response
