@@ -1,7 +1,10 @@
 import os
+import sys
+
+from requests_oauthlib import OAuth1Session
+
 from twitter.api import TwitterAPI
 from twitter.utils import Utils
-import sys
 
 
 class Lists(TwitterAPI):
@@ -29,92 +32,173 @@ class Lists(TwitterAPI):
 
     def __init__(self, consumer_key: str, consumer_secret: str, access_token: str, access_secret: str):
         super().__init__(consumer_key, consumer_secret, access_token, access_secret)
-        self.GET = self._GET(self.api)
-        self.POST = self._POST(self.api)
+        self.GET = self._GET(self.api, self.base_url)
+        self.POST = self._POST(self.api, self.base_url)
 
     # inner class for GET methods
-
     class _GET:
-        def __init__(self, api):
+        def __init__(self, api: OAuth1Session, base_url: str):
             self.method = 'GET'
             self.api = api
+            self.base_url = base_url
 
         def list(self, params={
             'user_id': '',
             'screen_name': 'mathnuko',
             'reverse': False,
         }):
-            endpoint = Utils.create_endpoint('lists/list')
+            path = 'lists/list.json'
+            endpoint = self.base_url + path
             return self.api.get(endpoint, params=params)
 
         def members(self):
-            endpoint = Utils.create_endpoint('lists/members')
+            path = 'lists/members.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def members_show(self):
-            endpoint = Utils.create_endpoint('lists/members/show')
+            path = 'lists/members/show.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def memberships(self):
-            endpoint = Utils.create_endpoint('lists/memberships')
+            path = 'lists/memberships.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def ownerships(self):
-            endpoint = Utils.create_endpoint('lists/ownerships')
+            path = 'lists/ownerships.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def show(self):
-            endpoint = Utils.create_endpoint('lists/show')
+            path = 'lists/show.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def statuses(self):
-            endpoint = Utils.create_endpoint('lists/statuses')
+            path = 'lists/statuses.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def subscribers(self):
-            endpoint = Utils.create_endpoint('lists/subscribers')
+            path = 'lists/subscribers.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
         def subscriptions(self):
-            endpoint = Utils.create_endpoint('lists/subscriptions')
+            path = 'lists/subscriptions.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.get(url=endpoint, params=params)
 
     # inner class for POST methods
-
     class _POST:
-        def __init__(self, api):
+        def __init__(self, api: OAuth1Session, base_url: str):
             self.method = 'POST'
             self.api = api
+            self.base_url = base_url
 
         def create(self):
-            endpoint = Utils.create_endpoint('lists/create')
+            path = 'lists/create.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def destroy(self):
-            endpoint = Utils.create_endpoint('lists/destroy')
+            path = 'lists/destroy.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def members_create(self):
-            endpoint = Utils.create_endpoint('lists/members/create')
+            path = 'lists/members/create.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def members_create_all(self):
-            endpoint = Utils.create_endpoint('lists/members/create_all')
+            path = 'lists/members/create_all.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def members_destroy(self):
-            endpoint = Utils.create_endpoint('lists/members/destroy')
+            path = 'lists/members/destroy.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def members_destroy_all(self):
-            endpoint = Utils.create_endpoint('lists/members/destroy_all')
+            path = 'lists/members/destroy_all.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def subscribers_create(self):
-            endpoint = Utils.create_endpoint('lists/subscribers/create')
+            path = 'lists/subscribers/create.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def subscribers_destroy(self):
-            endpoint = Utils.create_endpoint('lists/subscribers/destroy')
+            path = 'lists/subscribers/destroy.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
         def update(self):
-            endpoint = Utils.create_endpoint('lists/update')
+            path = 'lists/update.json'
+            endpoint = self.base_url + path
+
+            # Create params
+            params = {}
+            return self.api.post(url=endpoint, params=params)
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.append(
-        '/Users/okuwaki/Projects/AtCoderStream/AtCoderStream/lib/twitter_api'
-    )
     api = Lists(
         consumer_key=os.environ['TW_CONSUMER_KEY'],
         consumer_secret=os.environ['TW_CONSUMER_SECRET'],
         access_token=os.environ['TW_ACCESS_TOKEN'],
         access_secret=os.environ['TW_ACCESS_SECRET'],
     )
-    res = api.list()

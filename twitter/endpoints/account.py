@@ -37,7 +37,7 @@ class Account(TwitterAPI):
             * rate-limit: 15 times / 15 min
             * allowed parameter: None
             """
-            path = 'account/settings/'
+            path = 'account/settings'
             endpoint = Utils.create_endpoint(path)
             response = self.api.get(url=endpoint)
             return response
